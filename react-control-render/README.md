@@ -1,74 +1,56 @@
-# @yelysei/react-files-drag-and-drop
+# react-control-render
 
-A light-weighted and customizable React Component that handles Files Drag & Drop.
-
+Easy-to-use tool to handle the content that needs to be rendered only on the client-side or on the server-side.
 ## Installation
 
 Install with npm:
 
 ```
-npm i @yelysei/react-files-drag-and-drop
+npm i react-control-render
 ```
 
 or with yarn:
 
 ```
-yarn add @yelysei/react-files-drag-and-drop
+yarn add react-control-render
 ```
 
 ## Usage
 
-First you need to import FilesDragAndDrop component:
+If you need some content to be rendered only on the server-side or on the client-side, you just need to import the `ClientOnly` or `ServerOnly` component and wrap it around the needed content:
 
 ```javascript
-import FilesDragAndDrop from '@yelysei/react-files-drag-and-drop';
-```
+import React from 'react';
+import {ClientOnly, ServerOnly} from 'react-control-render';
 
-And then use it like this: 
-
-```javascript
-<FilesDragAndDrop
-    onUpload={(files) => console.log(files)}
-    count={3}
-    formats={['jpg', 'png', 'svg']}
-    containerStyles={{
-        width: '200px',
-        height: '200px',
-        border: '1px solid #cccccc',
-    }}
-    openDialogOnClick
->
-    <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }}>
-        Drop files here
+const TestRender = () => {
+  return (
+    <div>
+      <ServerOnly>This text is rendered only on the server-side</ServerOnly>
+      <ClientOnly>This text is rendered only on the client-side</ClientOnly>
     </div>
-</FilesDragAndDrop>
+  );
+};
+
+export default TestRender;
 ```
 
-## Props
+Alternately, you can use the `useRender` hook approach:
 
-Here is the list of all available props:
+```javascript
+import React from 'react';
+import {useRender} from 'react-control-render';
 
-Name | Type | Required | Description
----|---|---|---
-`onUpload` | function | + | Function that will be called when files are dropped into the component and successfully validated. Receives list of `files`
-`children` | node | + | Inner content of the component
-`count` | number | | Max count of files
-`formats` | string[] | | List of available file formats
-`openDialogOnClick` | boolean | | If enabled, file dialog will be opened on click at the component
-`hoverText` | string or function | | Message that will appear when files are dragged over the component. Function receives available file formats and max files count.<br/>Default value: 'Drop files here'
-`successText` | string or function | | Message that will appear when files are successfully uploaded. Function receives list of uploaded files.<br/>Default value: 'Successfully uploaded'
-`errorCountText` | string or function | | Message that will appear when more files than available are dropped into the component. Function receives available max files count.<br/>Default value: ({count}) => \`Only ${count} file${count !== 1 ? 's' : ''} can be uploaded at a time\`
-`errorFormatText` | string or function | | Message that will appear when files with incorrect formats are dropped into the component. Function receives available file formats.<br/>Default value: ({formats}) => \`Only following file formats are acceptable: ${formats.join(', ')}\` 
-`containerStyles` | CSS properties | | Custom styles for container
-`hoverMessageStyles` | CSS properties | | Custom styles for hover message
-`successMessageStyles` | CSS properties | | Custom styles for success message
-`errorMessageStyles` | CSS properties | | Custom styles for error message
-`successTime` | number | | Time duration in milliseconds when the success message will be displayed.<br/>Default value: 1000
-`errorTime` | number | | Time duration in milliseconds when the error message will be displayed.<br/>Default value: 2000
-`onDrop` | function | | Function that will be called when files are dropped into the component but not validated yet. Receives list of `files`
-`onDragEnter` | function | | Function that will be called when dragged files entered the component
-`onDragLeave` | function | | Function that will be called when dragged files leaved the component
+const TestRender = () => {
+  const {isClient, isServer} = useRender();
+
+  return (
+    <div>
+      {isClient && <>Client Text</>
+      {isServer && <>Server Text</>
+    </div>
+  );
+};
+
+export default TestRender;
+```
