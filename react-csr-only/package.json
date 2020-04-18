@@ -1,0 +1,57 @@
+{
+  "name": "react-csr-only",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "react",
+    "rendering",
+    "browser",
+    "ssr",
+    "server side rendering",
+    "csr",
+    "client side rendering"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:YelyseiLukin/react-csr-only.git"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/YelyseiLukin/react-csr-only#readme",
+  "author": "Yelysei Lukin <ylukin277@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@types/jest": "^25.1.0",
+    "@types/node-sass": "^4.11.0",
+    "@types/react": "^16.9.19",
+    "jest": "^25.1.0",
+    "node-sass": "^4.13.1",
+    "react-test-renderer": "^16.12.0",
+    "ts-jest": "^25.0.0",
+    "tslint": "^6.0.0",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.7.5"
+  }
+}
