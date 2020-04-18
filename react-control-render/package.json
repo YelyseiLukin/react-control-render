@@ -1,10 +1,12 @@
 {
-  "name": "react-csr-only",
+  "name": "react-control-render",
   "version": "1.0.0",
-  "description": "",
+  "description": "Easy-to-use tool to handle the content that needs to be rendered only on the client-side or on the server-side",
   "keywords": [
     "react",
     "rendering",
+    "client",
+    "server",
     "browser",
     "ssr",
     "server side rendering",

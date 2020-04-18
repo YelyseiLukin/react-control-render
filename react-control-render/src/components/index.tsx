@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const ClientOnly: React.FC<Props> = ({children}) => {
+export const ClientOnly: React.FC<Props> = ({children}) => {
   const [allowRender, setAllowRender] = React.useState(false);
 
   React.useEffect(() => {
@@ -17,5 +17,3 @@ const ClientOnly: React.FC<Props> = ({children}) => {
     </>
   ) : null;
 };
-
-export default ClientOnly;
