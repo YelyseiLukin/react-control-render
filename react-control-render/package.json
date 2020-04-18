@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:YelyseiLukin/react-csr-only.git"
+    "url": "git@github.com:YelyseiLukin/react-control-render.git"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -35,7 +35,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/YelyseiLukin/react-csr-only#readme",
+  "homepage": "https://github.com/YelyseiLukin/react-control-render#readme",
   "author": "Yelysei Lukin <ylukin277@gmail.com>",
   "license": "MIT",
   "dependencies": {
